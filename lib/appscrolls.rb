@@ -8,3 +8,10 @@ Dir[File.dirname(__FILE__) + '/../scrolls/*.rb'].each do |path|
   scroll = AppScrollsScrolls::Scroll.generate(key, File.open(path))
   AppScrollsScrolls::Scrolls.add(scroll)
 end
+
+local_path = "#{ENV['HOME']}/.appscrolls"
+Dir["#{local_path}/scrolls/*.rb"].each do |path|
+  key = File.basename(path, '.rb')
+  scroll = AppScrollsScrolls::Scroll.generate(key, File.open(path))
+  AppScrollsScrolls::Scrolls.add(scroll)
+end
